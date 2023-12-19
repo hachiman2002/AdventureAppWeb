@@ -1,0 +1,53 @@
+{% extends 'core/base_administration.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/us.css' %}"
+{% endblock %}
+
+{% block title %}Evento {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-5">
+    </div>
+    <a href="{% url 'events:event-list'%}" class="btn btn-info mb-2 mr-5">Volver</a>
+    <a href="{% url 'events:event-update' event.id_event %}" class="btn btn-info mb-2"><i class='bx bxs-eraser'></i> Editar evento</a>
+    <a href="{% url 'events:event-delete' event.id_event %}" class="btn btn-info mb-2"><i class='bx bxs-trash-alt'></i> Borrar evento</a>
+    <div class="row">
+        <div class="col-12">
+            <table class="table" style="border: 2px solid #d6d3d3 ;">
+                <thead>
+                    <tr>
+                        <th class="bg-light" scope="col">Nombre evento</th>
+                        <th scope="col">Fecha del evento</th>
+                        <th scope="col">Imagen portada</th>
+                        <th class="bg-light" scope="col">Creado</th>
+                        <th scope="col">Ultima actualización</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bg-light">{{event.name}}</td>
+                        <td>{{event.date_event}} km</td>
+                        <td>{{event.description}} km</td>                       
+                        <td>
+                            {% if event.mainImage %}
+                                <img src="{{event.mainImage.url}}" class="img-fluid" style="width: 220px;">
+                            {% else %}
+                                <img src="{% static 'destinations/img/no-image.jpg' %}" class="img-fluid" style="width: 60px;">
+                            {% endif %}
+                        </td>
+                        <td class="bg-light">{{event.created}}</td>
+                        <td>{{event.updated}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 style="font-weight: bold;">Descripcion:</h2>
+            <p>{{event.description}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

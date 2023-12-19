@@ -1,0 +1,69 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% block extra_head %}
+href="{% static 'core/css/eat.css' %}"
+{% endblock %}
+
+{% block title %}Donde Comer{% endblock %}
+
+{% block description %}
+<div class="container vh-50">
+    <!--Description-->
+    <div class="row  h-100 align-items-end">
+        <div class="col-md-10 col-lg-6 text-white" style= "background-color: rgba(91, 91, 91, 0.7); padding: 15px">
+            <!--Title-->
+            <h1 class="text-capitalize">
+                <span class="text-info h5">Ven a Saborear Tu Experiencia </span> <br> Restaurantes
+            </h1>
+            <!--Description-->
+            <p>
+                Te llevaremos a un viaje culinario por los diversos restaurantes de Curacautín. Desde delicias locales en acogedores cafés hasta experiencias gastronómicas en restaurantes con encanto, esta recopilación te invita a saborear la autenticidad de la cocina local. Descubre los lugares más deliciosos y sumérgete en una experiencia gastronómica única en Curacautín. ¡Buen provecho!
+            </p>
+            <!--Button-->
+        </div>
+    </div>
+</div>
+{% endblock %}
+    
+{% block content %}
+<!--SECTION FOUR RESTAURANTS-->
+<section class="container mt-5">
+
+    <div class="row">
+        <!--Title-->
+        <div class="col-12 text-center">
+            <h3 class="text-info">Restaurantes</h3>
+        </div>
+    </div>
+    <!--Paragraph-->
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="text-muted">Prueba las comidas de la zona en los mejores restaurantes de Curacautín</p>
+        </div>
+    </div>
+    <!--accomodations cards-->
+    <div class="row justify-content-center justify-content-lg-between mb-5">
+        <!--card 1-->
+        {% for eat in object_list %}
+                <article class="card shadow m-1" style="width: 16rem;">
+                    <div class="box-card-img">
+                        <img src="{{eat.mainImage.url}}" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{eat.name}}</h5>
+                        <p class="card-text">{{eat.description|striptags|safe|truncatechars:"50"}}</p>
+                        <a href="{% url "eats:eat-detail-user" eat.id_eat %}" class="btn btn-info">Visitar</a>
+                    </div>
+                </article>
+        {% endfor %}
+
+    </div>
+
+    <!--Accordions-->
+    <div class="row">
+
+    </div>
+</section>
+
+{% endblock %}

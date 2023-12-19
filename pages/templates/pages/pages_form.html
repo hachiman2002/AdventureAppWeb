@@ -1,0 +1,25 @@
+{% extends 'core/base_administration.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/us.css' %}"
+{% endblock %}
+
+{% block title %}Paginas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-3">
+        <h1 class="text-center">Crea tu nueva pagina secundaria</h1>
+        <div class="col-md-9 mx-auto">
+                <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="text-center">
+                        <input type="submit" value="Crear Pagina" class="col-12 btn btn-info btn-block mb-5"/>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

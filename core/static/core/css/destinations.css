@@ -1,0 +1,95 @@
+/*HEADER*/
+.header{
+    background-image: url(../img/bg-header-destinations.jpg) ;
+    background-position: center;
+    background-size: cover;
+}
+.img-logo-page{
+    width: 80px;
+}
+
+.dropdown-item:hover{
+    background-color: #158091; 
+    color: inherit; 
+}
+
+.linear-white::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 10px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.vh-50{
+    height: 50vmin;
+}
+
+/*SECTION ONE INFO*/
+.ful-img{
+    width: 570px;
+    height: 370px;
+}
+.fondo{
+    background-color: rgba(169, 169, 169, 0.5); 
+    padding: 20px;
+}
+
+.ful-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.box-imgages img{
+    cursor: pointer;
+}
+.p_info{
+    text-align: justify;
+}
+/*SECTION TWO CARDS DESTINATIONS*/
+.box-card-img{
+    width: 16rem;
+    height: 11rem;
+}
+
+.box-card-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*SECTION FIVE FOOTER*/
+.bx{
+    font-size: 1.5rem;
+}
+
+.bxl-whatsapp:hover{
+    color: rgb(42, 177, 42);
+}
+.bxl-facebook:hover{
+    color: blue;
+}
+.bxl-instagram:hover{
+    color: rgb(216, 153, 71);
+}
+
+/*MEDIA QUERIES*/
+@media screen and (max-width: 376px){
+    .p_comment{
+        font-size: 0.80em;
+    }
+    .p_history{
+        font-size: 0.90em;
+        text-align: justify;
+    }
+}
+
+@media screen and (max-width: 440px){
+    .vh-50{
+        height: 50vmax;
+    }
+}

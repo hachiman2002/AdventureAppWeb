@@ -1,0 +1,52 @@
+{% extends 'core/base_administration.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/us.css' %}"
+{% endblock %}
+
+{% block title %}Donde dormir {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-5">
+    </div>
+    <a href="{% url 'accommodations:accommodation-list'%}" class="btn btn-info mb-2 mr-5">Volver</a>
+    <a href="{% url 'accommodations:accommodation-update' accommodation.id_accommodation %}" class="btn btn-info mb-2"><i class='bx bxs-eraser'></i> Editar hospedaje</a>
+    <a href="{% url 'accommodations:accommodation-delete' accommodation.id_accommodation %}" class="btn btn-info mb-2"><i class='bx bxs-trash-alt'></i> Borrar hospedaje</a>
+    <div class="row">
+        <div class="col-12">
+            <table class="table" style="border: 2px solid #d6d3d3 ;">
+                <thead>
+                    <tr>
+                        <th class="bg-light" scope="col">Nombre hospedaje</th>
+                        <th scope="col">Direccion</th>
+                        <th class="bg-light" scope="col">Imagen</th>
+                        <th scope="col">Creado</th>
+                        <th class="bg-light" scope="col">Ultima Actualización</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bg-light">{{accommodation.name}}</td>
+                        <td>{{accommodation.address}} </td>
+                        <td>
+                            {% if accommodation.mainImage %}
+                                <img src="{{accommodation.mainImage.url}}" class="img-fluid" style="width: 220px;">
+                            {% else %}
+                                <img src="{% static 'accommodations/img/no-image.jpg' %}" class="img-fluid" style="width: 60px;">
+                            {% endif %}
+                        </td>
+                        <td class="bg-light">{{accommodation.created}}</td>
+                        <td>{{accommodation.updated}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 style="font-weight: bold;">Descripcion:</h2>
+            <p>{{accommodation.description}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/events.css' %}"
+{% endblock %}
+
+{% block title %}Eventos{% endblock %}
+
+{% block description %}
+<div class="container vh-50">
+    <!--Description-->
+    <div class="row  h-100 align-items-end">
+        <div class="col-md-10 col-lg-6 text-white" style= "background-color: rgba(91, 91, 91, 0.6); padding: 15px">
+            <!--Title-->
+            <h1 class="text-capitalize">
+                <span class="text-info h5">Tu Evento Inolvidable Comienza aqui </span> <br> Eventos
+            </h1>
+            <!--Description-->
+            <p>
+                Explora la magia de los eventos en Curacautín. Desde festivales coloridos hasta experiencias culturales,
+                cada evento es una ventana a la vida y la celebración en este lugar único. Descubre la emoción que hay detrás de cada ocasión.
+                ¡Tu próxima experiencia inolvidable te espera!
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+    
+{% block content %}
+<!--SECTION ONE CARDS EVENTS-->
+<section class="container">
+
+    <div class="row">
+        <!--Title-->
+        <div class="col-12 text-center">
+            <h3 class="text-info">Actividades</h3>
+        </div>
+    </div>
+    <!--Paragraph-->
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="text-muted">Explora lo que está por venir: descubre los próximos eventos que harán vibrar a Curacautín. ¡Prepárate para sumergirte en experiencias únicas y momentos memorables!</p>
+        </div>
+    </div>
+    <!--events cards-->
+    <div class="row mb-5 mt-3  justify-content-center justify-content-lg-between ">
+        <div class="row justify-content-center justify-content-lg-start mb-5">
+            <!--card 1-->
+            {% for event in object_list %}
+                <article class="card shadow m-1" style="width: 16rem;">
+                    <div class="box-card-img">
+                        <img src="{{event.mainImage.url}}" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{event.name}}</h5>
+                        <p class="card-text">{{event.description|striptags|safe|truncatechars:"50"}}</p>
+                        <a href="{% url "events:event-detail-user" event.id_event %}" class="btn btn-info">Visitar</a>
+                    </div>
+                </article>
+            {% endfor %}
+        
+    </div>
+</section>
+{% endblock %}
+

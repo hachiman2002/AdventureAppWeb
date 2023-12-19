@@ -1,0 +1,36 @@
+{% extends 'core/base_detail.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/events.css' %}"
+{% endblock %}
+
+{% block title %}Eventos{% endblock %}
+{% block content %}
+<!--SECTION ONE INFO-->
+<section class="container">
+    <!--Title-->
+    <div class="row">
+        <div class="col-12 text-center my-5">
+            <h2 class="text-info">{{event.name}}</h2>
+        </div>
+        <div class="row">
+            <!--Article text-->
+            <article class="col-12 col-lg-6">
+                <!--Alert-->
+                <p class="alert alert-success" role="alert">- El evento se realizara el dia: {{event.date_event}} .</p>
+                <p class="text-muted p_info">
+                    {{event.description}}
+                </p>
+            </article>
+            <!--Big image-->
+            <div class="col-12 col-lg-6 ful-img" id="fulImgBox">
+                <img src="{{event.mainImage.url}}" class="img-fluid shadow   mb-5 bg-body rounded" id="fulImg"
+                    alt="...">
+            </div>
+    
+        </div>
+    <a href="{% url 'events:event-list-user' %}" class="btn btn-info mb-2">Volver</a>
+</section>
+{% endblock %}

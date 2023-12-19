@@ -1,0 +1,65 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/accommodation.css' %}"
+{% endblock %}
+
+{% block title %}Alojamientos{% endblock %}
+
+{% block description %}
+<div class="container vh-50">
+    <!--Description-->
+    <div class="row  h-100 align-items-end">
+        <div class="col-md-10 col-lg-6 text-white" style= "background-color: rgba(120, 120, 120, 0.6); padding: 15px">
+            <!--Title-->
+            <h1 class="text-capitalize">
+                <span class="text-info h5">Aventuras que se Hospedan Contigo </span> <br> Alojamientos
+            </h1>
+            <!--Description-->
+            <p>
+                Tu guía para descubrir los lugares acogedores que hacen de tu estancia en Curacautín una experiencia inolvidable. Desde encantadoras cabañas hasta cómodos hostales, te ofrecemos una cuidada selección de opciones de hospedaje para que encuentres el refugio perfecto. Explora nuestras recomendaciones y sumérgete en la hospitalidad de Curacautín. ¡Prepárate para una estancia inigualable!
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+    
+{% block content %}
+<!--SECTION TWO ACCOMODATIONS-->
+<section class="container mt-5">
+
+    <div class="row">
+        <!--Title-->
+        <div class="col-12 text-center">
+            <h3 class="text-info">Nuestra selección de cabañas en Curacautín</h3>
+        </div>
+    </div>
+    <!--Paragraph-->
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="text-muted">¿Deseando viajar a Curacautín? Nosotros te recomendamos sin lugar a dudas alojarte
+                en una de las cabañas en Curacautín y disfrutar al máximo de la estancia. ¡Hay una gran variedad de
+                opciones en a elegir!</p>
+        </div>
+    </div>
+    <!--accomodations cards-->
+    <div class="row justify-content-center justify-content-lg-between mb-5">
+        <!--card 1-->
+        {% for accommodation in object_list %}
+                <article class="card shadow m-1" style="width: 16rem;">
+                    <div class="box-card-img">
+                        <img src="{{accommodation.mainImage.url}}" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{accommodation.name}}</h5>
+                        <p class="card-text">{{accommodation.description|striptags|safe|truncatechars:"50"}}</p>
+                        <a href="{% url "accommodations:accommodation-detail-user" accommodation.id_accommodation %}" class="btn btn-info">Visitar</a>
+                    </div>
+                </article>
+        {% endfor %}
+    </div>
+    <hr class="">
+</section>
+{% endblock %}

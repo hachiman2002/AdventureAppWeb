@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/*HEADER*/
+.img-logo-page{
+    width: 80px;
+}
+
+/*SECTION ONE US*/
+.container {
+    flex: 1;
+}
+
+.p_history{
+    text-align: justify;
+}
+.dropdown-item:hover{
+    background-color: #158091; 
+    color: inherit; 
+}
+.img-us{
+    width: 100%;
+    height: 100%;
+}
+
+
+/*SECTION FOUR fFOOTER*/
+.bx{
+    font-size: 1.5rem;
+}
+
+.box-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+.bxl-whatsapp:hover{
+    color: rgb(42, 177, 42);
+}
+.bxl-facebook:hover{
+    color: blue;
+}
+.bxl-instagram:hover{
+    color: rgb(216, 153, 71);
+}

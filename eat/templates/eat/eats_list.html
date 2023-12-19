@@ -1,0 +1,39 @@
+{% extends 'core/base_administration.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/us.css' %}"
+{% endblock %}
+
+{% block title %}Donde comer{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-12 d-flex  justify-content-center bg-info p-3">
+            <h1 class="text-white mx-5">Sección Restaurants</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{% url 'eats:eat-create' %}" class="btn btn-info text-white mb-2">Agregar Restaurant</a>
+            <ol class="list-group list-group-numbered">
+                {% for eat in object_list %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                <a href="{% url 'eats:eat-detail' eat.id_eat %}">{{eat.name}}
+                                </a>
+                            </div>
+                        </div>
+                        <span class="badge bg-info rounded-pill">Creado: {{eat.created}}</span>
+                    </li>
+                {% empty %}
+                    <li>No hay sitios para mostrar, agregue uno.</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+{% endblock %}

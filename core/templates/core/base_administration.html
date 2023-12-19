@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADM - {% block title %} {% endblock %}</title>
+    <!--ICONS-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Estilos -->
+    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./fontawesome-free-6.2.1-web/css/all.css">
+    <link href="{% static 'core/css/administration.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-info  col-sidebar">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">
+                            <img src="{% static 'core/img/logo-page.png'%}" alt="Logo Pagina Curacautin" class="img-logo-page" style="width: 80px;">
+                        </span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a href="{% url "profile"%}" class="nav-link align-middle px-0 text-white">
+                                <i class='bx bxs-user-circle mr-2'></i><span class="ms-1 d-none d-sm-inline">Perfil</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url "destinations:destination-list" %}" class="nav-link align-middle px-0 text-white">
+                                <i class='bx bxs-leaf mr-2'></i><span class="ms-1 d-none d-sm-inline">Destinos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url "eats:eat-list" %}" class="nav-link align-middle px-0 text-white">
+                                <i class='bx bxs-bowl-hot mr-2' ></i><span class="ms-1 d-none d-sm-inline">Donde comer</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url "accommodations:accommodation-list" %}" class="nav-link align-middle px-0 text-white">
+                                <i class='bx bxs-building-house mr-2'></i><span class="ms-1 d-none d-sm-inline">Donde Alojarse</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url "events:event-list" %}" class="nav-link align-middle px-0 text-white">
+                                <i class='bx bxs-calendar-event mr-2'></i></i> <span class="ms-1 d-none d-sm-inline">Eventos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url "social:social-list" %}" class="nav-link align-middle px-0 text-white">
+                                <i class='bx bxs-message-rounded-dots mr-2'></i><span class="ms-1 d-none d-sm-inline">Redes Sociales</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url "pages:page-list" %}" class="nav-link align-middle px-0 text-white">
+                                <i class='bx bxs-alarm-exclamation mr-2'></i><span class="ms-1 d-none d-sm-inline">Politicas</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'signup' %}" class="nav-link align-middle px-0 text-white">
+                                <i class='bx bxs-user-plus mr-2'></i></i><span class="ms-1 d-none d-sm-inline">Registrar Usuario</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'logout' %}" class="nav-link align-middle px-0 text-white">
+                                <i class='bx bxs-log-out mr-2'></i></i><span class="ms-1 d-none d-sm-inline">Cerrar Sesion</span>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        {% if request.path == "/administration/"%}
+            <div class="col py-3">
+                <p class="nav-link">Bienvenido, {{ usuario.username }}.</p>
+                <h2>Panel de administracion aplicacion Adventure</h2>
+            </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
+    <!--Script para dar color al background en el que el usuario esta posicionado-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var currentPage = window.location.pathname; 
+            var navLinks = document.querySelectorAll(".nav-link");
+    
+            navLinks.forEach(function(link) {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("activado");
+                }
+            });
+        });
+    </script>
+    <style>
+        .nav-link.activado {
+            text-decoration: underline;
+        }
+    </style>
+    <!-- Javascript -->
+    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'core/js/main.js' %}"></script>
+</body>

@@ -1,0 +1,130 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/destinations.css' %}"
+{% endblock %}
+
+{% block title %}Destinos{% endblock %}
+
+{% block description %}
+<div class="container vh-50">
+    <!--Description-->
+    <div class="row  h-100 align-items-end ">
+        <div class="col-md-10 col-lg-6 text-white" style= "background-color: rgba(91, 91, 91, 0.8); padding: 15px" >
+            <!--Title-->
+            <h1 class="text-capitalize ">
+                <span class="text-info h5">Encuentra Tus Mejores</span> <br> Destinos
+            </h1>
+            <!--Description-->
+            <p>
+                Descubre los destinos mágicos de Curacautín. Desde montañas imponentes hasta rincones llenos de historia, cada lugar tiene algo especial que ofrecer. ¡Explora y enamórate de la belleza única de este rincón chileno!
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+    
+{% block content %}
+<!--SECTION ONE INFO-->
+<section class="container">
+    <!--Title-->
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="text-info">DESTINOS TURÍSTICOS</h2>
+        </div>
+    </div>
+    <!--Description-->
+    <div class="row">
+        <!--Article text-->
+        <article class="col-12 col-lg-6">
+            <h3 class="text-info">{{ ultimo_destino.name }}</h3>
+            <!--Alert-->
+            {%if ultimo_destino.suitable_disabled == True %}
+                <p class="alert alert-success" role="alert">Apto para discapacitados</p>
+            {% elif ultimo_destino.suitable_disabled == False %}
+                <p class="alert alert-warning" role="alert">No apto para discapacitados</p>
+            {% endif%}
+            <p class="text-muted p_info">
+                {{ultimo_destino.description|striptags|safe|truncatechars:"500"}}
+            </p>
+            <p class="text-muted p_info">- A {{ultimo_destino.distance}} kilometros de Curautín.</p>
+        </article>
+        <!--Big image-->
+        <div class="col-12 col-lg-6 ful-img" id="fulImgBox">
+            <img src="{{ultimo_destino.mainImage.url}}" class="img-fluid shadow p-3 mb-5 bg-body rounded" id="fulImg" alt="Imagen portada destino">
+        </div>
+        
+    </div>
+    <!--images-->
+    <div class="row my-5 box-imgages d-flex justify-content-center ">
+        {% if ultimo_destino.image1 %}
+        <img src="{{ ultimo_destino.image1.url }}" class="img-fluid col-3 col-lg-2 m-1" onclick="updateImages('{{ ultimo_destino.image1.url }}')" alt="imagen destino">
+    {% endif %}
+
+    {% if ultimo_destino.image2 %}
+        <img src="{{ ultimo_destino.image2.url }}" class="img-fluid col-3 col-lg-2 m-1" onclick="updateImages('{{ ultimo_destino.image2.url }}')" alt="imagen destino">
+    {% endif %}
+
+    {% if ultimo_destino.image3 %}
+        <img src="{{ ultimo_destino.image3.url }}" class="img-fluid col-3 col-lg-2 m-1" onclick="updateImages('{{ ultimo_destino.image3.url }}')" alt="imagen destino">
+    {% endif %}
+
+    {% if ultimo_destino.image4 %}
+        <img src="{{ ultimo_destino.image4.url }}" class="img-fluid col-3 col-lg-2 m-1" onclick="updateImages('{{ ultimo_destino.image4.url }}')" alt="imagen destino">
+    {% endif %}
+
+    {% if ultimo_destino.image5 %}
+        <img src="{{ ultimo_destino.image5.url }}" class="img-fluid col-3 col-lg-2 m-1" onclick="updateImages('{{ ultimo_destino.image5.url }}')" alt="imagen destino">
+    {% endif %}
+    </div>
+    <hr>
+</section>
+
+<!--SECTION TWO DESTINATIONS-->
+<section class="container mt-5">
+    <div class="row">
+        <!--Title-->
+        <div class="col-12 text-center">
+            <h3 class="text-info">Destinos</h3>
+        </div>
+    </div>
+    <!--Paragraph-->
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="text-muted">¿Estás pensando en viajar a Curacautín? Conoce más sobre los increíbles lugares
+                turísticos que te esperan.</p>
+        </div>
+    </div>
+    <!--Destinations cards-->
+    <div class="row justify-content-center justify-content-lg-start mb-5">
+        <!--card 1-->
+        {% for destination in object_list %}
+            <article class="card shadow m-1" style="width: 16rem;">
+                <div class="box-card-img">
+                    <img src="{{destination.mainImage.url}}" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{destination.name}}</h5>
+                    <p class="card-text">{{destination.description|striptags|safe|truncatechars:"50"}}</p>
+                    <a href="{% url "destinations:destination-detail-user" destination.id_destination %}" class="btn btn-info">Visitar</a>
+                </div>
+            </article>
+        {% endfor %}
+</section>
+<script>
+    function updateImages(src) {
+        var mainImage = document.getElementById('fulImg');
+        var fulImgBox = document.getElementById('fulImgBox');
+
+        // Actualiza la imagen grande
+        mainImage.src = src;
+
+        // Mueve la miniatura clicada a la posición de la imagen grande
+        fulImgBox.innerHTML = '<img src="' + src + '" class="img-fluid shadow p-3 mb-5 bg-body rounded" id="fulImg" alt="Imagen portada destino">';
+    }
+</script>
+{% endblock %}
+    
+

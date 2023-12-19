@@ -1,0 +1,39 @@
+{% extends 'core/base_administration.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/us.css' %}"
+{% endblock %}
+
+{% block title %}Eventos{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-12 d-flex  justify-content-center bg-info p-3">
+            <h1 class="text-white mx-5">Sección Eventos</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{% url 'events:event-create' %}" class="btn btn-info text-white mb-2">Agregar Evento</a>
+            <ol class="list-group list-group-numbered">
+                {% for event in object_list %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                <a href="{% url 'events:event-detail' event.id_event %}">{{event.name}}
+                                </a>
+                            </div>
+                        </div>
+                        <span class="badge bg-info rounded-pill">Creado: {{event.created}}</span>
+                    </li>
+                {% empty %}
+                    <li>No hay eventos para mostar, agregue uno.</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+{% endblock %}

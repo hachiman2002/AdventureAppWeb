@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{% endblock %}</title>
+  <!-- Fuentes -->
+  <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+  <!--ICONS-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- Estilos -->
+  <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link {% block extra_head %}{% endblock %} rel="stylesheet">
+
+</head>
+
+<body>
+  <!--HEADER-->
+  <header class="header white">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-info">
+      <!--Logo-->
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'core/img/logo-page.png'%}" alt="Logo Pagina Curacautin" class="img-logo-page">
+      </a>
+      <!--Button-->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!--Anclas-->
+      <div class="collapse navbar-collapse text-capitalize" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "index" %}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "destinations:destination-list-user" %}">Destinos</a>
+          </li>
+          <li class="nav-item dropdown"> <!-- Agregar la clase 'dropdown' al elemento li -->
+            <a class="nav-link dropdown-toggle" href="#" id="destinosDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              ¿Donde?
+            </a>
+            <div class="dropdown-menu bg-info" aria-labelledby="destinosDropdown">
+              <a class="dropdown-item text-white" href="{% url "eats:eat-list-user" %}">Comer</a>
+              <a class="dropdown-item text-white" href="{% url "accommodations:accommodation-list-user" %}">Alojarse</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{%  url  "events:event-list-user" %}">Eventos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "us" %}">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "contact" %}">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    {% block description %}{% endblock %}
+
+    <!--Condicion para no mostrar imagen en template us, contact-->
+    {% if request.path != "/us/" and request.path != "/contact/"%}
+    <hr />
+    <img src="{% static 'core/img/cuts/cut-header.svg'%}">
+    {% endif %}
+
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <!--SECTION FOUR FOOTER-->
+  <footer class="bg-info text-white">
+    <div class="container text-white p-2">
+      <div class="row d-flex align-items-center justify-content-md-center">
+        <!--Logo-->
+        <a href="" class="col-md-2 col-lg-4 text-center">
+          <img src="{% static 'core/img/logo-page.png' %}" alt="" class="img-logo-page">
+        </a>
+        <!--Icons Social-->
+        <div class=" col-md-2 col-lg-4 text-center">
+          <p class="m-0">
+            {% if LINK_TWITTER %}
+              <a href="{{LINK_TWITTER}}" class="link" target="_blamk">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            {% endif %}
+            {% if LINK_FACEBOOK %}
+              <a href="{{LINK_FACEBOOK}}" class="link" target="_blamk">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            {% endif %}
+            {% if LINK_INSTAGRAM %}
+              <a href="{{LINK_INSTAGRAM}}" class="link" target="_blamk">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            {% endif %}
+            {% if LINK_LINKEDIN %}
+              <a href="{{LINK_LINKEDIN}}" class="link" target="_blamk">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            {% endif %}
+          </p>
+        </div>
+        <!--privacy policies-->
+        <div class=" col-md-8 col-lg-4 text-center">
+          <!--<a href="" class="text-reset">{{context}}</a>
+          -
+          <a href="" class="text-reset">Cookies</a>
+          -
+          <a href="" class="text-reset">Aviso Legal</a>-->
+          {% load pages_extras %}
+          {% get_page_list as page_list %}
+          {% for page in  page_list %}
+          <a href="{% url 'pages:page-template' page.id %}" class="text-reset text-white">{{page.title}}</a>
+          {% endfor%}
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Javascript -->
+  <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'core/js/main.js' %}"></script>
+</body>
+
+</html>

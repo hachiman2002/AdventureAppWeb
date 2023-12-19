@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/us.css' %}"
+{% endblock %}
+
+{% block title %}Nosotros{% endblock %}
+
+{% block content %}
+<!--SECTION ONE US-->
+<section class="container mb-5">
+    <div class="row mt-5">
+        <!--INFO US-->
+        <div class="col-md-12 col-lg-12 col-xl-6">
+            <div>
+                <h1 class="text-center text-info">Nosotros</h1>
+                <p class="text-muted p_history">¡En AdventureCuracautín, nos enorgullece ser la puerta de entrada a la maravilla que es Curacautín! Como apasionados amantes de nuestro rincón en el sur de Chile, estamos estratégicamente ubicados en el corazón de la acción, listos para guiarte en una experiencia única.</p>
+                <p class="text-muted p_history">Nuestra ubicación no es solo una dirección, es el epicentro de la autenticidad local y la conexión con la comunidad. Desde aquí, te llevaremos a explorar los encantos naturales, los eventos vibrantes y los destinos pintorescos que hacen de Curacautín un destino incomparable.</p>
+                <p class="text-muted p_history">En [Nombre de la Empresa], no solo te ofrecemos un servicio, te brindamos acceso privilegiado a las maravillas de Curacautín. Estamos comprometidos a compartir la riqueza cultural y natural de nuestra región, asegurándonos de que tu experiencia sea tan única como nuestro hermoso hogar en la Araucanía.</p>
+                <p class="text-muted p_history">Únete a nosotros en nuestra ubicación central en 181, Curacautín, Curacautín, Araucanía, y descubre por qué somos la opción ideal para convertir tu visita a Curacautín en una experiencia inolvidable. ¡Te invitamos a explorar con nosotros!</p>
+            </div>
+        </div>
+        <!--IMG-->
+        <div class="col-md-12 col-lg-12 col-xl-6  mt-lg-5">
+            <img src="{% static 'core/img/us/us.jpg'%}" alt="" class="img-fluid img-us">
+        </div>
+    </div>
+</section>
+{% endblock %}

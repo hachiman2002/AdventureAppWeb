@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*HEADER*/
+.img-logo-page{
+    width: 80px;
+}
+
+.dropdown-item:hover{
+    background-color: #158091; 
+    color: inherit; 
+}
+
+/*SECTION ONE FORM*/
+.container {
+    flex: 1;
+}
+
+
+/*SECTION TWO FOOTER*/
+.bx{
+    font-size: 1.5rem;
+}
+
+.bx{
+    color: rgb(170, 167, 167);
+}
+
+.bxl-whatsapp:hover{
+    color: rgb(42, 177, 42);
+}
+.bxl-facebook:hover{
+    color: blue;
+}
+.bxl-instagram:hover{
+    color: rgb(216, 153, 71);
+}

@@ -1,0 +1,44 @@
+{% extends 'core/base_administration.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/us.css' %}"
+{% endblock %}
+
+{% block title %}Redes Sociales{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-5">
+    </div>
+    <a href="{% url 'social:social-list'%}" class="btn btn-info mb-2 mr-5">Volver</a>
+    <a href="{% url 'social:social-update' social.pk %}" class="btn btn-info mb-2"><i class='bx bxs-eraser'></i> Editar Red Social</a>
+    <a href="{% url 'social:social-delete' social.pk %}" class="btn btn-info mb-2"><i class='bx bxs-trash-alt'></i> Borrar Red Social</a>
+    <div class="row">
+        <div class="col-12">
+            <table class="table" style="border: 2px solid #d6d3d3 ;">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre Clave</th>
+                        <th class="bg-light" scope="col">Nombre</th>
+                        <th scope="col">URL</th>
+                        <th class="bg-light" scope="col">Creado</th>
+                        <th scope="col">Actualizado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{social.name_key}}</td>
+                        <td class="bg-light">{{social.name}}</td>
+                        <td>{{social.url}}</td>
+                        <td class="bg-light">{{social.created}}</td>
+                        <td>{{social.updated}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

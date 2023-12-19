@@ -1,0 +1,208 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/index.css' %}"
+{% endblock %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block description %}
+<div class="container vh-50">
+  <!--Description-->
+  <div class="row  h-100 align-items-end">
+    <div class="col-md-10 col-lg-6 text-white" style= "background-color: rgba(91, 91, 91, 0.6); padding: 15px">
+      <!--Title-->
+      <h1 class="text-capitalize">
+        <span class="text-info h5">Ven a vivir tu </span> <br> aventura
+      </h1>
+      <!--Description-->
+      <p>
+        ¡Explora la magia de Curacautín, donde cada rincón cuenta una historia de belleza natural y aventura sin límites!
+        Ven a vivir tu propia aventura en este paraíso del sur de Chile, donde los paisajes deslumbrantes se encuentran con la calidez de su gente.
+        Descubre la esencia de Curacautín y déjate llevar por una experiencia única llena de emociones y descubrimientos inolvidables.
+        ¡Bienvenido a tu AdventureCuracautín!
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<!--SECTION ONE CARDS-->
+<section class="container">
+  <div class="row justify-content-md-center">
+    <!--Texts-->
+    <div class="col-12 text-center mb-3">
+      <h2 class="text-info text-uppercase h6">Experiencias</h2>
+      <h3 class="text-capitalize">Vive las mejores aventuras</h3>
+      <p class="text-muted">Curacautín, con su impresionante entorno natural y su rica cultura, ofrece una amplia
+        variedad de experiencias recreativas para los visitantes. Ya sea que busques aventuras al aire libre,
+        exploración cultural o simplemente momentos de relajación, aquí encontrarás algo para satisfacer todos los
+        gustos.</p>
+    </div>
+    <!--Cards-->
+    <!-- Card 1 -->
+    <article class=" col-md-6 col-lg-4 card-effect">
+      <div class="card">
+        <img src="{% static "core/img/cards/card-destination.jpg" %}" alt="Imagen Destinos" class="card-img card-img-filter img-fluid">
+        <div class="card-img-overlay text-white d-flex flex-column justify-content-center text-center">
+          <h4>Destinos</h4>
+          <p>Descubre los destinos únicos de Curacautín. Desde impresionantes paisajes hasta encantadores pueblos, cada lugar tiene su propia historia. ¡Vive la aventura!</p>
+          <a href="{% url "destinations:destination-list-user" %}" class="text-reset">Visitar</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class=" col-md-6 col-lg-4 my-5 my-md-0 card-effect">
+      <div class="card">
+        <img src="{% static 'core/img/cards/card-events.jpg'%}" alt="Imagen Destinos" class="card-img card-img-filter img-fluid">
+        <div class="card-img-overlay text-white d-flex flex-column justify-content-center text-center">
+          <h4>Eventos</h4>
+          <p>Explora los emocionantes eventos de Curacautín. Desde festivales vibrantes hasta actividades locales, cada evento es una oportunidad para sumergirse en la cultura y la diversión. ¡No te pierdas la acción!</p>
+          <a href="{% url "events:event-list-user" %}" class="text-reset">Visitar</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class=" col-md-6 col-lg-4 card-effect mt-md-4 mt-lg-0">
+      <div class="card">
+        <img src="{% static 'core/img/cards/card-us.webp'%}" alt="Imagen Destinos" class="card-img card-img-filter img-fluid">
+        <div class="card-img-overlay text-white d-flex flex-column justify-content-center text-center">
+          <h4>Nosotros</h4>
+          <p>Conoce más sobre nosotros en Curacautín. Somos amantes de esta región y queremos compartir su encanto contigo. Descubre quiénes somos y por qué amamos este lugar. ¡Te invitamos a ser parte de nuestra historia!</p>
+          <a href="{% url "us" %}" class="text-reset">Visitar</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!--SECTION TWO COMMENT-->
+<section class="comments linear-white">
+  <img src="{% static 'core/img/cuts/cut-header.svg'%}" alt="" class="transform-turn">
+  <div class="container">
+    <div class="row">
+      <blockquote class="col-12 text-white text-center">
+        <!--IMGAGE-->
+        <img src="{% static 'core/img/francisco-saavedra.jpg'%}" alt="Pancho Saavedra" class="commets__img">
+        <!--COMMENT-->
+        <p class="p_comment">Curacautin, es un lugar muy hermoso con muchos lugares para recorrer y vivir grandes
+          aventuras.</p>
+        <!--NAME-->
+        <footer class="blockquote-footer text-white">
+          <cite>Pancho Saavedra</cite>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!--SECTION THREE INFORMATION-->
+<section class="container my-5">
+  <div class="row">
+    <div id="weather-info" class="text-center mt-3  container my-5 text-success ">
+      <h2 class="text-info text-uppercase">El clima hoy en Curacautín es:</h2>
+    </div>
+  </div>
+  
+</section>
+<section class="container my-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <!--Title-->
+      <h3 class="text-info text-uppercase ">Información</h3>
+    </div>
+  </div>
+  <div class="row">
+    <!--Info 1-->
+    <article class="col-6 col-md-3">
+      <div class="card text-center card-info" data-aos="fade-up">
+        <div class="card-body">
+          <h5 class="card-title h1 text-info">6</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Lagunas</h6>
+        </div>
+      </div>
+    </article>
+    <!--Info 2-->
+    <article class="col-6 col-md-3">
+      <div class="card text-center card-info">
+        <div class="card-body">
+          <h5 class="card-title h1 text-info">2</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Saltos</h6>
+        </div>
+      </div>
+    </article>
+    <!--Info 3-->
+    <article class="col-6 col-md-3">
+      <div class="card text-center card-info">
+        <div class="card-body">
+          <h5 class="card-title h1 text-info">3</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Lagos</h6>
+        </div>
+      </div>
+    </article>
+    <article class="col-6 col-md-3">
+      <div class="card text-center card-info">
+        <div class="card-body">
+          <h5 class="card-title h1 text-info">4</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Termas</h6>
+        </div>
+      </div>
+      
+    </article>
+    
+  </div>
+  <div class="row mt-5">
+    <!--History-->
+    <div class="col-md-12 col-lg-12 col-xl-6">
+      <div>
+        <h1 class="text-center">Historia de Curacautín</h1>
+        <p class="text-muted p_history">Curacautín es una comuna ubicada en la Región de la Araucanía, en el sur de Chile. Su historia se remonta a la época precolombina, cuando la zona estaba habitada por el pueblo mapuche, cuya presencia dejó una huella importante en la cultura y el territorio. El nombre "Curacautín" proviene del mapudungun y significa "piedra de la fortaleza" o "piedra de los médicos".</p>
+        <p class="text-muted p_history">Durante la colonización española, la región fue escenario de conflictos entre los colonizadores y los mapuches, en un período conocido como la Guerra de Arauco. En el siglo XIX, con la llegada de los colonos europeos, se establecieron las bases de la actual comuna, marcando el inicio de la explotación agrícola y forestal.</p>
+        <p class="text-muted p_history">Hoy en día, Curacautín es reconocido por sus impresionantes paisajes que incluyen bosques nativos, ríos y montañas. Es también un punto de acceso a la Reserva Nacional Malalcahuello-Nalcas, un área de gran belleza natural.</p>
+        <p class="text-muted p_history">La comunidad de Curacautín ha trabajado para preservar su patrimonio cultural y natural, convirtiéndolo en un destino atractivo para los amantes de la naturaleza y aquellos que buscan experiencias auténticas en el sur de Chile.</p>
+      </div>
+    </div>
+    <!--Map-->
+    <div class="col-md-12 col-lg-12 col-xl-6  mt-lg-5">
+      <iframe class="iframe-map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25000.338485045148!2d-71.90848598474386!3d-38.44049164677885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x966cae36fb756e9f%3A0xa8fad04edc7d0a73!2sCuracautin%2C%20Curacaut%C3%ADn%2C%20Araucan%C3%ADa!5e0!3m2!1ses-419!2scl!4v1696448479233!5m2!1ses-419!2scl"
+        style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var lat = -38.4333;
+    var lon = -71.8833;
+    var apiKey = "401c09d12951501fe1818fbabd79fa23";
+    var idioma = "es"
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&lang=" + idioma;
+
+    $.ajax({
+      url: apiUrl,
+      method: "GET",
+      dataType: "json",
+      success: function(data) {
+        var temperature = (data.main.feels_like - 273.15).toFixed(2);
+        var weatherDescription = data.weather[0].description;
+        var isSunny = weatherDescription.toLowerCase().includes("sol");
+
+        $("#weather-info").append("Temperatura: " + temperature + " °C<br>");
+        $("#weather-info").append("Estado del tiempo: " + weatherDescription + "<br>");
+        $("#weather-info").append("¿Está soleado?: " + (isSunny ? "Sí" : "No"));
+      },
+      error: function(error) {
+        console.log("Error al obtener datos meteorológicos: " + error.message);
+      }
+    });
+  });
+</script>
+
+{% endblock%}

@@ -1,0 +1,64 @@
+{% extends 'core/base_detail.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/eat.css' %}"
+{% endblock %}
+
+{% block title %}Donde comer{% endblock %}
+{% block content %}
+<!--SECTION ONE INFO-->
+<section class="container">
+    <!--Title-->
+    <div class="row">
+        <div class="col-12 text-center my-5">
+            <h2 class="text-info">{{eat.name}}</h2>
+        </div>
+        <div class="row">
+            <!--Article text-->
+            <article class="col-12 col-lg-6">
+                <!--Alert-->
+                <p class="alert alert-success" role="alert">- La dirección del restaurant es: {{eat.address}} .</p>
+                <p class="text-muted p_info">
+                    {{eat.description}}
+                </p>
+            </article>
+            <!--Big image-->
+            <div class="col-12 col-lg-6 ful-img" id="fulImgBox">
+                <img src="{{eat.mainImage.url}}" class="img-fluid shadow mb-5 bg-body rounded" id="fulImg" alt="...">
+            </div>
+
+        </div>
+        <!--Images-->
+            <div class="row box-imgages d-flex justify-content-center">
+                {% if eat.image1 %}
+                <img src="{{ eat.image1.url }}" class="img-fluid col-3 col-lg-2 m-1"
+                    onclick="updateImages('{{ eat.image1.url }}')" alt="imagen destino">
+                {% endif %}
+
+                {% if eat.image2 %}
+                <img src="{{ eat.image2.url }}" class="img-fluid col-3 col-lg-2 m-1"
+                    onclick="updateImages('{{ eat.image2.url }}')" alt="imagen destino">
+                {% endif %}
+
+                {% if eat.image3 %}
+                <img src="{{ eat.image3.url }}" class="img-fluid col-3 col-lg-2 m-1"
+                    onclick="updateImages('{{ eat.image3.url }}')" alt="imagen destino">
+                {% endif %}
+            </div>
+        <a href="{% url 'eats:eat-list-user' %}" class="btn btn-info mb-2">Volver</a>
+</section>
+<script>
+    function updateImages(src) {
+        var mainImage = document.getElementById('fulImg');
+        var fulImgBox = document.getElementById('fulImgBox');
+
+        // Actualiza la imagen grande
+        mainImage.src = src;
+
+        // Mueve la miniatura clicada a la posición de la imagen grande
+        fulImgBox.innerHTML = '<img src="' + src + '" class="img-fluid shadow mb-5 bg-body rounded" id="fulImg" alt="...">';
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,124 @@
+/*HEADER*/
+
+.header{
+    background-image: url(../img/bg-header.jpg) ;
+    background-position: center;
+    background-size: cover;
+}
+.dropdown-item:hover{
+    background-color: #158091;
+    color: inherit;
+}
+.img-logo-page{
+    width: 80px;
+}
+.dropdown-item:hover{
+    background-color: #158091; 
+    color: inherit; 
+}
+
+.linear-white::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 10px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.vh-50{
+    height: 50vmin;
+}
+
+/*SECTION ONE CARDS*/
+.card-img-filter{
+    filter: brightness(0.5);
+}
+
+.card{
+    max-height: 24rem;
+}
+.card{
+    transition-duration: .6s;
+    clip-path: polygon(50% 0, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 50%, 0 0);
+}
+.card-effect:hover .card{
+    clip-path: polygon(50% 0, 50% 0, 100% 50%, 100% 50%, 50% 100%, 50% 100%, 0 50%, 0 50%);
+}
+.card-img-overlay{
+    transition-duration: .6s;
+}
+.card-effect:hover .card-img-overlay{
+    transform: scale(.9);
+}
+
+/*SECTION TWOCOMMENTS*/
+.comments{
+    background-image: url(../img/bg-section-two.jpeg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.comments.linear-white::after{
+    top: 0;
+}
+.commets__img{
+    --size: 80px;
+    width: var(--size);
+    height: var(--size);
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 7px 7px 7px rgba(0 0 0 / 0.5);
+    border: 3px ridge #fff;
+}
+
+.transform-turn{
+    transform: rotate(0.5turn);
+}
+
+/*SECTION THREE INFORMATION*/
+.card-info {
+    border: none;
+}
+.p_history{
+    text-align: justify;
+}
+.iframe-map{
+    width: 100%;
+    height: 100%;
+}
+
+/*SECTION FOUR fFOOTER*/
+.bx{
+    font-size: 1.5rem;
+}
+
+.bxl-whatsapp:hover{
+    color: rgb(42, 177, 42);
+}
+.bxl-facebook:hover{
+    color: blue;
+}
+.bxl-instagram:hover{
+    color: rgb(216, 153, 71);
+}
+
+/*MEDIA QUERIES*/
+@media screen and (max-width: 376px){
+    .p_comment{
+        font-size: 0.80em;
+    }
+    .p_history{
+        font-size: 0.90em;
+        text-align: justify;
+    }
+}
+
+@media screen and (max-width: 440px){
+    .vh-50{
+        height: 50vmax;
+    }
+}

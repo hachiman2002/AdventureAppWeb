@@ -1,0 +1,58 @@
+{% extends 'core/base_administration.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+href="{% static 'core/css/us.css' %}"
+{% endblock %}
+
+{% block title %}Destino {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-5">
+    </div>
+    <a href="{% url 'destinations:destination-list'%}" class="btn btn-info mb-2 mr-5">Volver</a>
+    <a href="{% url 'destinations:destination-update' destination.id_destination %}" class="btn btn-info mb-2"><i class='bx bxs-eraser'></i> Editar destino</a>
+    <a href="{% url 'destinations:destination-delete' destination.id_destination %}" class="btn btn-info mb-2"><i class='bx bxs-trash-alt'></i> Borrar destino</a>
+    <div class="row">
+        <div class="col-12">
+            <table class="table" style="border: 2px solid #d6d3d3 ;">
+                <thead>
+                    <tr>
+                        <th class="bg-light" scope="col">Nombre destino</th>
+                        <th scope="col">Distancia Curacautín</th>
+                        <th class="bg-light" scope="col">Apto discapacitados</th>
+                        <th scope="col">Imagen portada</th>
+                        <th class="bg-light" scope="col">Creado</th>
+                        <th scope="col">Ultima actualización</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bg-light">{{destination.name}}</td>
+                        <td>{{destination.distance}} km</td>
+                        {%if destination.suitable_disabled == True %}
+                            <td class="bg-light">Apto para discapacitados</td>
+                        {% elif destination.suitable_disabled == False %}
+                            <td class="bg-light">No apto para discapacitados</td>
+                        {% endif%}
+                        <td>
+                            {% if destination.mainImage %}
+                                <img src="{{destination.mainImage.url}}" class="img-fluid" style="width: 220px;">
+                            {% else %}
+                                <img src="{% static 'destinations/img/no-image.jpg' %}" class="img-fluid" style="width: 60px;">
+                            {% endif %}
+                        </td>
+                        <td class="bg-light">{{destination.created}}</td>
+                        <td>{{destination.updated}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 style="font-weight: bold;">Descripcion:</h2>
+            <p>{{destination.description}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
