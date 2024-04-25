@@ -137,9 +137,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #email
-# if DEBUG:
-#     EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-#     EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 # else:
 #     # Aquí hay que configurar un email real para producción
 #     pass
@@ -151,7 +151,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #email config
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '02a0fdd9db0871'
-EMAIL_HOST_PASSWORD = '9a67029fa85f92'
-EMAIL_PORT = '2525'
+#EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+#EMAIL_HOST_USER = '2f6e28b65a3756'
+#EMAIL_HOST_PASSWORD = 'b54821cd351660'
+#EMAIL_PORT = '2525'
