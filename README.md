@@ -28,7 +28,7 @@ https://youtu.be/InTw6HqGDGY?si=DU-Ly0q0o5zjZC2K
 2.- Instala los requisitos del proyecto ejecutando
 
 ```bash
-    pip install -r requirements.txt
+    pip install -r paquetes.txt
 ```
 3.- Crear super usuario
 ```bash
